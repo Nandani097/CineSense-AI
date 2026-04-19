@@ -24,71 +24,63 @@ function loadReview(type) {
   updateCounter(ta);
 }
 
-// Sentiment Analysis logic
-function analyzeReview() {
+// Sentiment Analysis logic connected to Python Flask API
+async function analyzeReview() {
   const text = document.getElementById('reviewInput').value.trim();
   if(!text) { alert("Please enter a review."); return; }
 
   const btnText = document.getElementById('btnText');
   const loader = document.getElementById('btnLoader');
-  btnText.innerText = "Analyzing...";
+  btnText.innerText = "Analyzing via Python API...";
   
-  setTimeout(() => {
-    let score = 0;
-    let posWordsFound = [];
-    let negWordsFound = [];
-    
-    const words = text.toLowerCase().match(/\b\w+\b/g) || [];
-    words.forEach(w => {
-      if(POS_WORDS.has(w)) { score++; posWordsFound.push(w); }
-      if(NEG_WORDS.has(w)) { score--; negWordsFound.push(w); }
+  try {
+    const response = await fetch('http://localhost:5000/predict', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ review: text })
     });
 
-    // Basic negation detection
-    if(text.toLowerCase().includes("not good") || text.toLowerCase().includes("wasn't great")) score -= 2;
-    
-    const isPositive = score >= 0;
-    const confidence = Math.min(100, Math.max(50, 50 + Math.abs(score) * 10));
+    if (!response.ok) {
+      throw new Error(`API error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    const isPositive = data.sentiment === 'Positive';
+    const confidence = data.confidence;
 
     // UI Updates
     document.getElementById('resultPlaceholder').classList.add('hidden');
     document.getElementById('resultContent').classList.remove('hidden');
     
-    document.getElementById('resultLabel').innerText = isPositive ? "Positive" : "Negative";
+    document.getElementById('resultLabel').innerText = data.sentiment;
     document.getElementById('resultLabel').className = "result-label " + (isPositive ? "positive" : "negative");
     document.getElementById('resultEmoji').innerText = isPositive ? "😊" : "😞";
-    document.getElementById('resultSublabel').innerText = isPositive ? "The review expresses favorable sentiment." : "The review expresses unfavorable sentiment.";
+    document.getElementById('resultSublabel').innerText = isPositive ? "The model predicts favorable sentiment." : "The model predicts unfavorable sentiment.";
     
     document.getElementById('confPct').innerText = confidence + "%";
     document.getElementById('confBar').style.width = confidence + "%";
 
-    document.getElementById('rmWords').innerText = words.length;
-    document.getElementById('rmPos').innerText = posWordsFound.length;
-    document.getElementById('rmNeg').innerText = negWordsFound.length;
-    document.getElementById('rmScore').innerText = score;
-
-    let highlighted = text;
-    posWordsFound.forEach(w => {
-      const reg = new RegExp(`\\b${w}\\b`, 'gi');
-      highlighted = highlighted.replace(reg, `<span class="hl-pos">${w}</span>`);
+    // Simple keyword highlighting for display (since API just returns sentiment)
+    const words = text.split(/\s+/);
+    let highlighted = "";
+    const posW = ['good', 'great', 'excellent', 'amazing', 'masterpiece', 'love', 'best', 'stunning'];
+    const negW = ['bad', 'terrible', 'worst', 'boring', 'awful', 'waste', 'disaster', 'disappointing'];
+    
+    words.forEach(w => {
+      let clean_w = w.toLowerCase().replace(/[^a-z]/g, '');
+      if(posW.includes(clean_w)) highlighted += `<span class="hl-pos">${w}</span> `;
+      else if(negW.includes(clean_w)) highlighted += `<span class="hl-neg">${w}</span> `;
+      else highlighted += `${w} `;
     });
-    negWordsFound.forEach(w => {
-      const reg = new RegExp(`\\b${w}\\b`, 'gi');
-      highlighted = highlighted.replace(reg, `<span class="hl-neg">${w}</span>`);
-    });
+    
     document.getElementById('highlightedText').innerHTML = highlighted;
 
-    const cloud = document.getElementById('keywordCloud');
-    cloud.innerHTML = '';
-    [...new Set(posWordsFound)].forEach(w => {
-      const el = document.createElement('span'); el.className='kw-badge pos'; el.innerText='+ '+w; cloud.appendChild(el);
-    });
-    [...new Set(negWordsFound)].forEach(w => {
-      const el = document.createElement('span'); el.className='kw-badge neg'; el.innerText='- '+w; cloud.appendChild(el);
-    });
-
-    btnText.innerText = "🔍 Analyze Sentiment";
-  }, 800);
+  } catch (error) {
+    console.error("Error calling Python API:", error);
+    alert("Could not connect to the Python Flask API. Make sure app.py is running on port 5000!");
+  } finally {
+    btnText.innerText = "🔍 Predict Sentiment";
+  }
 }
 
 // Explorer
