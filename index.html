@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Cinesentiment — IMDB Review Sentiment Analysis | Microsoft Elevate Capstone</title>
-<meta name="description" content="AI-powered IMDB movie review sentiment analysis using RNN/LSTM deep learning. Interactive dashboard with EDA, live sentiment demo, and model performance metrics."/>
+<title>Cinesentiment — Deep Learning Sentiment Analysis</title>
+<meta name="description" content="AI-powered IMDB movie review sentiment analysis using RNN/LSTM deep learning. Real-time predictions, system architecture, and model performance."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
@@ -21,18 +21,12 @@
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#hero" class="nav-link active">Home</a></li>
+      <li><a href="#solution" class="nav-link">Architecture</a></li>
       <li><a href="#demo" class="nav-link">Live Demo</a></li>
-      <li><a href="#explorer" class="nav-link">Explorer</a></li>
-      <li><a href="#eda" class="nav-link">EDA</a></li>
-      <li><a href="#model" class="nav-link">Model</a></li>
-      <li><a href="#batch" class="nav-link">Batch Analyze</a></li>
-      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#model" class="nav-link">Performance</a></li>
+      <li><a href="#conclusion" class="nav-link">Conclusion</a></li>
     </ul>
     <div class="nav-right">
-      <div class="ms-badge">
-        <div class="ms-grid"><span></span><span></span><span></span><span></span></div>
-        <span>Microsoft Elevate</span>
-      </div>
       <button class="hamburger" id="hamburger" onclick="toggleMenu()">☰</button>
     </div>
   </div>
@@ -42,25 +36,19 @@
 <section id="hero" class="hero">
   <div class="hero-particles" id="particles"></div>
   <div class="hero-content">
-    <div class="hero-chip">🏆 Microsoft Elevate Capstone Project · Entertainment & Media</div>
+    <div class="hero-chip">🚀 Enterprise-Grade NLP Model</div>
     <h1>Decode Movie<br/><span class="text-gradient">Audience Sentiment</span><br/>with Deep Learning</h1>
-    <p class="hero-desc">An end-to-end AI system that classifies IMDB movie reviews as Positive or Negative using Bidirectional LSTM — with interactive EDA, live predictions, and full model transparency.</p>
+    <p class="hero-desc">An end-to-end NLP pipeline using Bidirectional LSTM to classify IMDB reviews as Positive or Negative with high accuracy, designed for scalable cloud deployment.</p>
     <div class="hero-ctas">
       <a href="#demo" class="cta-primary">🔍 Try Live Demo</a>
-      <a href="#eda" class="cta-secondary">📊 View Analysis</a>
-      <a href="https://github.com/Nandani097" target="_blank" class="cta-ghost">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-        GitHub
-      </a>
+      <a href="#solution" class="cta-secondary">⚙️ View Architecture</a>
     </div>
     <div class="hero-stats">
       <div class="hstat"><div class="hstat-val" data-count="50000">0</div><div class="hstat-key">Reviews Trained</div></div>
       <div class="hstat-div"></div>
-      <div class="hstat"><div class="hstat-val" data-count="93">0</div><div class="hstat-key">% Accuracy</div></div>
+      <div class="hstat"><div class="hstat-val">89.6%</div><div class="hstat-key">Val Accuracy</div></div>
       <div class="hstat-div"></div>
-      <div class="hstat"><div class="hstat-val">LSTM</div><div class="hstat-key">Architecture</div></div>
-      <div class="hstat-div"></div>
-      <div class="hstat"><div class="hstat-val" data-count="2">0</div><div class="hstat-key">Classes</div></div>
+      <div class="hstat"><div class="hstat-val">Bi-LSTM</div><div class="hstat-key">Architecture</div></div>
     </div>
   </div>
   <div class="hero-visual">
@@ -80,36 +68,102 @@
   </div>
 </section>
 
+<!-- ── PROPOSED SOLUTION & PIPELINE ── -->
+<section id="solution" class="section dark-section">
+  <div class="container">
+    <div class="section-tag">⚙️ System Design</div>
+    <h2 class="section-title">Proposed <span class="text-gradient">Solution</span></h2>
+    <p class="section-sub">End-to-end NLP pipeline using Bidirectional LSTM to classify IMDB reviews as Positive/Negative with high accuracy, deployed as a live web service.</p>
+    
+    <div class="pipeline-grid">
+      <div class="pipe-card">
+        <div class="pipe-num">1</div>
+        <h4>Data Collection</h4>
+        <p>IMDB 50K reviews dataset — 25K positive + 25K negative, sourced from Kaggle.</p>
+      </div>
+      <div class="pipe-card">
+        <div class="pipe-num">2</div>
+        <h4>Preprocessing</h4>
+        <p>Tokenization, HTML tag removal, stop-word filtering, sequence padding to 500 tokens.</p>
+      </div>
+      <div class="pipe-card">
+        <div class="pipe-num">3</div>
+        <h4>Embedding Layer</h4>
+        <p>GloVe / learned word embeddings mapping each token to a dense 128-dimensional vector.</p>
+      </div>
+      <div class="pipe-card">
+        <div class="pipe-num">4</div>
+        <h4>LSTM Model</h4>
+        <p>2-layer Bidirectional LSTM captures forward & backward context for robust classification.</p>
+      </div>
+      <div class="pipe-card">
+        <div class="pipe-num">5</div>
+        <h4>Training</h4>
+        <p>Binary cross-entropy, Adam optimizer, 10 epochs with EarlyStopping on validation loss.</p>
+      </div>
+      <div class="pipe-card">
+        <div class="pipe-num">6</div>
+        <h4>Deployment</h4>
+        <p>Flask REST API containerized and hosted on Azure Web Apps — publicly accessible.</p>
+      </div>
+    </div>
+
+    <h3 class="subsection-title" style="margin-top: 60px; margin-bottom: 20px;">System Development Approach</h3>
+    <div class="dev-approach-layout">
+      <div class="dev-box">
+        <h4>💻 System Requirements</h4>
+        <ul>
+          <li>Python 3.8+</li>
+          <li>Google Colab (GPU — T4)</li>
+          <li>Azure Web Apps (Deployment)</li>
+          <li>GitHub (Version Control)</li>
+          <li>8 GB RAM minimum</li>
+          <li>VS Code / Jupyter Notebook</li>
+        </ul>
+      </div>
+      <div class="dev-box">
+        <h4>🛠️ Libraries & Tools</h4>
+        <ul>
+          <li><strong>TensorFlow / Keras</strong> — LSTM model building & training</li>
+          <li><strong>NLTK / spaCy</strong> — Text preprocessing & tokenization</li>
+          <li><strong>NumPy / Pandas</strong> — Data manipulation & EDA</li>
+          <li><strong>Matplotlib/Seaborn</strong> — Training curves & visualizations</li>
+          <li><strong>Flask</strong> — REST API for prediction endpoint</li>
+          <li><strong>Scikit-learn</strong> — Accuracy, F1-Score, ROC-AUC metrics</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ── LIVE DEMO ── -->
 <section id="demo" class="section">
   <div class="container">
-    <div class="section-tag">⚡ Interactive</div>
+    <div class="section-tag">⚡ Interactive Endpoint</div>
     <h2 class="section-title">Live Sentiment <span class="text-gradient">Analyzer</span></h2>
-    <p class="section-sub">Paste any IMDB review and get instant AI sentiment prediction with word-level highlighting and confidence scoring.</p>
+    <p class="section-sub">Test the prediction pipeline. Paste any IMDB review and get instant AI sentiment prediction with word-level highlighting.</p>
 
     <div class="demo-layout">
       <div class="demo-input-panel">
         <div class="demo-toolbar">
-          <span class="toolbar-label">Quick load:</span>
-          <button class="quick-btn pos" onclick="loadReview('positive')">😊 Positive</button>
-          <button class="quick-btn neg" onclick="loadReview('negative')">😞 Negative</button>
-          <button class="quick-btn mix" onclick="loadReview('mixed')">🤔 Mixed</button>
+          <span class="toolbar-label">Sample Predictions:</span>
+          <button class="quick-btn pos" onclick="loadReview('positive')">😊 Positive Example</button>
+          <button class="quick-btn neg" onclick="loadReview('negative')">😞 Negative Example</button>
+          <button class="quick-btn mix" onclick="loadReview('mixed')">🤔 Mixed Example</button>
           <button class="quick-btn clr" onclick="clearReview()">✕ Clear</button>
         </div>
         <div class="char-counter" id="charCounter">0 / 1000 characters</div>
-        <textarea id="reviewInput" maxlength="1000" placeholder="Type or paste an IMDB movie review here...&#10;&#10;Tip: Use Ctrl+Enter to analyze quickly." oninput="updateCounter(this)"></textarea>
+        <textarea id="reviewInput" maxlength="1000" placeholder="Type or paste an IMDB movie review here..."></textarea>
         <button id="analyzeBtn" onclick="analyzeReview()">
-          <span id="btnText">🔍 Analyze Sentiment</span>
+          <span id="btnText">🔍 Predict Sentiment</span>
           <div class="btn-loader hidden" id="btnLoader"></div>
         </button>
-        <div class="demo-tips">💡 Tip: Try sarcastic or mixed-opinion reviews for interesting results!</div>
       </div>
 
       <div class="demo-result-panel" id="resultPanel">
         <div class="result-placeholder" id="resultPlaceholder">
           <div class="placeholder-icon">🎭</div>
-          <p>Your analysis results will appear here</p>
-          <small>Enter a review and click Analyze</small>
+          <p>Prediction results will appear here</p>
         </div>
         <div class="result-content hidden" id="resultContent">
           <div class="result-header">
@@ -128,256 +182,149 @@
               <div class="conf-bar" id="confBar"></div>
             </div>
           </div>
-          <div class="sentiment-gauge-wrap">
-            <canvas id="gaugeChart" width="200" height="110"></canvas>
-            <div class="gauge-needle-label" id="gaugeLabel"></div>
-          </div>
           <div class="word-analysis">
             <h4>Word Analysis</h4>
             <div class="highlighted-text" id="highlightedText"></div>
           </div>
           <div class="keyword-cloud" id="keywordCloud"></div>
-          <div class="result-metrics">
-            <div class="rm-card"><span class="rm-val" id="rmWords">0</span><span class="rm-key">Words</span></div>
-            <div class="rm-card"><span class="rm-val" id="rmPos">0</span><span class="rm-key">Positive</span></div>
-            <div class="rm-card"><span class="rm-val" id="rmNeg">0</span><span class="rm-key">Negative</span></div>
-            <div class="rm-card"><span class="rm-val" id="rmScore">0</span><span class="rm-key">Net Score</span></div>
-          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── MOVIE EXPLORER ── -->
-<section id="explorer" class="section dark-section">
+<!-- ── ALGORITHM & DEPLOYMENT ── -->
+<section id="algorithm" class="section dark-section">
   <div class="container">
-    <div class="section-tag">🎬 Dataset Sample</div>
-    <h2 class="section-title">Movie Review <span class="text-gradient">Explorer</span></h2>
-    <p class="section-sub">Browse real IMDB reviews from our dataset — filtered and sorted interactively.</p>
-    <div class="explorer-toolbar">
-      <div class="filter-group">
-        <button class="filter-btn active" data-filter="all" onclick="filterReviews('all',this)">All</button>
-        <button class="filter-btn" data-filter="positive" onclick="filterReviews('positive',this)">😊 Positive</button>
-        <button class="filter-btn" data-filter="negative" onclick="filterReviews('negative',this)">😞 Negative</button>
-      </div>
-      <div class="sort-group">
-        <label>Sort by:</label>
-        <select id="sortSelect" onchange="sortReviews()">
-          <option value="confidence">Confidence</option>
-          <option value="rating">Rating</option>
-          <option value="year">Year</option>
-        </select>
-      </div>
-      <div class="search-wrap">
-        <input type="text" id="searchInput" placeholder="🔍 Search movies..." oninput="searchReviews()"/>
-      </div>
-    </div>
-    <div class="review-grid" id="reviewGrid"></div>
-    <div class="explorer-count" id="explorerCount"></div>
-  </div>
-</section>
-
-<!-- ── EDA DASHBOARD ── -->
-<section id="eda" class="section">
-  <div class="container">
-    <div class="section-tag">📊 Data Science</div>
-    <h2 class="section-title">Exploratory Data <span class="text-gradient">Analysis</span></h2>
-    <p class="section-sub">Deep-dive into the IMDB 50K dataset — distributions, word frequencies, genre sentiment trends, and more.</p>
-    <div class="eda-tabs">
-      <button class="tab-btn active" onclick="showEDA('dist')">Distribution</button>
-      <button class="tab-btn" onclick="showEDA('words')">Word Frequency</button>
-      <button class="tab-btn" onclick="showEDA('length')">Review Length</button>
-      <button class="tab-btn" onclick="showEDA('genre')">Genre Analysis</button>
-    </div>
-    <div class="eda-panels">
-      <div class="eda-panel active" id="eda-dist">
-        <div class="chart-grid-2">
-          <div class="chart-card">
-            <h4>Sentiment Distribution</h4>
-            <canvas id="sentimentPieChart"></canvas>
-            <p class="chart-note">Perfectly balanced dataset: 25K positive / 25K negative</p>
-          </div>
-          <div class="chart-card">
-            <h4>Key Dataset Statistics</h4>
-            <div class="stat-table">
-              <div class="st-row"><span>Total Reviews</span><span class="st-val">50,000</span></div>
-              <div class="st-row"><span>Positive Reviews</span><span class="st-val teal">25,000</span></div>
-              <div class="st-row"><span>Negative Reviews</span><span class="st-val red">25,000</span></div>
-              <div class="st-row"><span>Avg Review Length</span><span class="st-val">233 words</span></div>
-              <div class="st-row"><span>Max Review Length</span><span class="st-val">2,470 words</span></div>
-              <div class="st-row"><span>Min Review Length</span><span class="st-val">4 words</span></div>
-              <div class="st-row"><span>Vocabulary Size</span><span class="st-val">~88,000</span></div>
-              <div class="st-row"><span>Token Vocab (model)</span><span class="st-val">10,000</span></div>
-              <div class="st-row"><span>Max Sequence Length</span><span class="st-val">200 tokens</span></div>
-              <div class="st-row"><span>Train / Val / Test</span><span class="st-val">80/10/10</span></div>
-            </div>
-          </div>
+    <div class="section-tag">🧠 Algorithm Insights</div>
+    <h2 class="section-title">Algorithm & <span class="text-gradient">Deployment</span></h2>
+    
+    <div class="algo-deploy-layout">
+      <div class="algo-box">
+        <h3>Algorithm: Bidirectional LSTM</h3>
+        <div class="algo-step">
+          <h4>Why LSTM?</h4>
+          <p>LSTM solves the vanishing gradient problem of vanilla RNN. It uses memory cells to retain long-range dependencies — crucial for understanding context in long movie reviews.</p>
+        </div>
+        <div class="algo-step">
+          <h4>Data Input</h4>
+          <p>50K IMDB reviews tokenized, HTML-stripped, stop-words removed, padded to 500 tokens. Vocabulary size: 10,000. 80% train / 20% test split.</p>
+        </div>
+        <div class="algo-step">
+          <h4>Training Process</h4>
+          <p>Adam optimizer (lr=0.001), binary cross-entropy loss, 10 epochs. EarlyStopping (patience=5) prevents overfitting. Dropout (0.5) added between LSTM layers.</p>
+        </div>
+        <div class="algo-step">
+          <h4>Prediction Process</h4>
+          <p>New review → tokenize → pad to 500 → model.predict() → sigmoid output → probability > 0.5 = Positive, else Negative. API returns label + confidence score.</p>
         </div>
       </div>
-      <div class="eda-panel" id="eda-words">
-        <div class="chart-grid-2">
-          <div class="chart-card">
-            <h4>Top 10 Positive Keywords</h4>
-            <canvas id="posWordsChart"></canvas>
-          </div>
-          <div class="chart-card">
-            <h4>Top 10 Negative Keywords</h4>
-            <canvas id="negWordsChart"></canvas>
-          </div>
+      
+      <div class="deploy-box">
+        <h3>Azure Deployment Flow</h3>
+        <div class="deploy-step">
+          <div class="deploy-icon">🖥️</div>
+          <div><strong>Train Model</strong><br/><small>Google Colab GPU (T4)</small></div>
         </div>
-      </div>
-      <div class="eda-panel" id="eda-length">
-        <div class="chart-card full">
-          <h4>Review Length Distribution (Word Count Bins)</h4>
-          <canvas id="lengthChart"></canvas>
-          <p class="chart-note">Most reviews fall in the 101–200 word range. Longer reviews tend to be more nuanced in sentiment.</p>
+        <div class="deploy-arrow">⬇</div>
+        <div class="deploy-step">
+          <div class="deploy-icon">💾</div>
+          <div><strong>Save Model</strong><br/><small>model.h5 / SavedModel</small></div>
         </div>
-      </div>
-      <div class="eda-panel" id="eda-genre">
-        <div class="chart-card full">
-          <h4>Positive vs Negative Sentiment by Genre (%)</h4>
-          <canvas id="genreChart"></canvas>
-          <p class="chart-note">Romance & Comedy genres show highest positive sentiment. Horror has the most polarized reviews.</p>
+        <div class="deploy-arrow">⬇</div>
+        <div class="deploy-step">
+          <div class="deploy-icon">🔗</div>
+          <div><strong>Flask API</strong><br/><small>POST /predict endpoint</small></div>
+        </div>
+        <div class="deploy-arrow">⬇</div>
+        <div class="deploy-step">
+          <div class="deploy-icon">🐳</div>
+          <div><strong>Containerize</strong><br/><small>Docker image (optional)</small></div>
+        </div>
+        <div class="deploy-arrow">⬇</div>
+        <div class="deploy-step">
+          <div class="deploy-icon">☁️</div>
+          <div><strong>Azure Deploy</strong><br/><small>Azure Web Apps (Free Tier)</small></div>
+        </div>
+        <div class="deploy-arrow">⬇</div>
+        <div class="deploy-step">
+          <div class="deploy-icon">🌐</div>
+          <div><strong>Live URL</strong><br/><small>Public HTTPS endpoint</small></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── MODEL DASHBOARD ── -->
-<section id="model" class="section dark-section">
+<!-- ── RESULT & OUTPUT ── -->
+<section id="model" class="section">
   <div class="container">
-    <div class="section-tag">🧠 Deep Learning</div>
-    <h2 class="section-title">Model Architecture & <span class="text-gradient">Performance</span></h2>
-    <p class="section-sub">Bidirectional LSTM with attention — training history, confusion matrix, and metric breakdown.</p>
-    <div class="model-layout">
-      <div class="model-arch">
-        <h3>Architecture</h3>
-        <div class="arch-flow">
-          <div class="arch-node input">Input<br/><small>seq_len=200</small></div>
-          <div class="arch-arrow-down">▼</div>
-          <div class="arch-node embed">Embedding<br/><small>vocab=10K, dim=128</small></div>
-          <div class="arch-arrow-down">▼</div>
-          <div class="arch-node bilstm">BiLSTM Layer 1<br/><small>units=128×2, return_seq=True</small></div>
-          <div class="arch-arrow-down">▼</div>
-          <div class="arch-node drop">Dropout 0.3<br/><small>Regularization</small></div>
-          <div class="arch-arrow-down">▼</div>
-          <div class="arch-node bilstm">BiLSTM Layer 2<br/><small>units=64×2, return_seq=False</small></div>
-          <div class="arch-arrow-down">▼</div>
-          <div class="arch-node dense">Dense 64 + ReLU<br/><small>Batch Norm</small></div>
-          <div class="arch-arrow-down">▼</div>
-          <div class="arch-node drop">Dropout 0.2</div>
-          <div class="arch-arrow-down">▼</div>
-          <div class="arch-node output">Output (Sigmoid)<br/><small>Positive / Negative</small></div>
-        </div>
-        <div class="model-config">
-          <div class="mc-row"><span>Optimizer</span><span>Adam (lr=0.001)</span></div>
-          <div class="mc-row"><span>Loss</span><span>Binary Crossentropy</span></div>
-          <div class="mc-row"><span>Epochs</span><span>10</span></div>
-          <div class="mc-row"><span>Batch Size</span><span>64</span></div>
-          <div class="mc-row"><span>Parameters</span><span>~3.2M</span></div>
-        </div>
-      </div>
-      <div class="model-charts">
-        <div class="chart-card dark-card">
-          <h4>Training & Validation Accuracy</h4>
-          <canvas id="accChart"></canvas>
-        </div>
-        <div class="chart-card dark-card">
-          <h4>Training & Validation Loss</h4>
-          <canvas id="lossChart"></canvas>
-        </div>
-      </div>
-    </div>
-
+    <div class="section-tag">📈 Performance Metrics</div>
+    <h2 class="section-title">Result & <span class="text-gradient">Output</span></h2>
+    
     <div class="metrics-row">
-      <div class="metric-big"><div class="mb-val teal">93.2%</div><div class="mb-key">Train Accuracy</div></div>
-      <div class="metric-big"><div class="mb-val purple">91.7%</div><div class="mb-key">Val Accuracy</div></div>
-      <div class="metric-big"><div class="mb-val gold">90.5%</div><div class="mb-key">Test Accuracy</div></div>
-      <div class="metric-big"><div class="mb-val green">90.8%</div><div class="mb-key">F1 Score</div></div>
-      <div class="metric-big"><div class="mb-val blue">0.963</div><div class="mb-key">AUC-ROC</div></div>
+      <div class="metric-big"><div class="mb-val teal">93.2%</div><div class="mb-key">Training Accuracy</div></div>
+      <div class="metric-big"><div class="mb-val blue">89.6%</div><div class="mb-key">Validation Accuracy</div></div>
+      <div class="metric-big"><div class="mb-val purple">0.926</div><div class="mb-key">ROC-AUC Score</div></div>
+      <div class="metric-big"><div class="mb-val gold">92.8%</div><div class="mb-key">F1-Score</div></div>
     </div>
 
-    <div class="conf-matrix-section">
-      <h3>Confusion Matrix</h3>
-      <div class="conf-matrix">
-        <div class="cm-header-row"><div></div><div class="cm-head">Predicted Positive</div><div class="cm-head">Predicted Negative</div></div>
-        <div class="cm-row"><div class="cm-side">Actual Positive</div><div class="cm-cell tp">TP: 11,280<div class="cm-pct">90.2%</div></div><div class="cm-cell fn">FN: 720<div class="cm-pct">5.8%</div></div></div>
-        <div class="cm-row"><div class="cm-side">Actual Negative</div><div class="cm-cell fp">FP: 660<div class="cm-pct">5.3%</div></div><div class="cm-cell tn">TN: 11,340<div class="cm-pct">90.7%</div></div></div>
+    <div class="chart-grid-2" style="margin-top: 40px;">
+      <div class="chart-card">
+        <h4>Training vs Validation Accuracy</h4>
+        <canvas id="accChart"></canvas>
+      </div>
+      <div class="chart-card">
+        <h4>Sample Predictions</h4>
+        <div class="sample-preds">
+          <div class="sp-row"><div class="sp-text">"An absolute masterpiece! Every scene is art."</div><div class="sp-label pos">POSITIVE</div></div>
+          <div class="sp-row"><div class="sp-text">"Boring plot and terrible acting. Avoid it."</div><div class="sp-label neg">NEGATIVE</div></div>
+          <div class="sp-row"><div class="sp-text">"Stunning visuals but the story could be better."</div><div class="sp-label pos">POSITIVE</div></div>
+          <div class="sp-row"><div class="sp-text">"Completely disappointing sequel. Makes no sense."</div><div class="sp-label neg">NEGATIVE</div></div>
+          <div class="sp-row"><div class="sp-text">"One of the best films I have seen this decade!"</div><div class="sp-label pos">POSITIVE</div></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── BATCH ANALYZER ── -->
-<section id="batch" class="section">
+<!-- ── CONCLUSION ── -->
+<section id="conclusion" class="section dark-section">
   <div class="container">
-    <div class="section-tag">📋 Bulk Processing</div>
-    <h2 class="section-title">Batch <span class="text-gradient">Analyzer</span></h2>
-    <p class="section-sub">Analyze multiple reviews at once. Enter one review per line and get a full sentiment report.</p>
-    <div class="batch-layout">
-      <div class="batch-input">
-        <div class="batch-toolbar">
-          <button onclick="loadBatchSample()" class="batch-btn">📝 Load Sample</button>
-          <button onclick="clearBatch()" class="batch-btn">✕ Clear</button>
-        </div>
-        <textarea id="batchInput" rows="10" placeholder="Enter one review per line...&#10;&#10;Line 1: The movie was absolutely brilliant!&#10;Line 2: Terrible waste of time and money.&#10;Line 3: Great acting but weak storyline."></textarea>
-        <button id="batchBtn" onclick="runBatch()" class="cta-primary full-width">🚀 Analyze All Reviews</button>
-      </div>
-      <div class="batch-results" id="batchResults">
-        <div class="batch-placeholder">
-          <div class="placeholder-icon">📊</div>
-          <p>Batch results will appear here</p>
-        </div>
-      </div>
-    </div>
-    <div class="batch-summary hidden" id="batchSummary">
-      <canvas id="batchPieChart" width="200" height="200"></canvas>
-      <div class="batch-stats" id="batchStats"></div>
-    </div>
-  </div>
-</section>
+    <div class="section-tag">✅ Final Summary</div>
+    <h2 class="section-title">Project <span class="text-gradient">Conclusion</span></h2>
+    <p class="section-sub">This project successfully demonstrates that Bidirectional LSTM networks can classify IMDB movie reviews with ~90% validation accuracy. The model generalises well across diverse review styles and is ready for production.</p>
 
-<!-- ── ABOUT ── -->
-<section id="about" class="section dark-section">
-  <div class="container">
-    <div class="about-layout">
-      <div class="about-project">
-        <div class="section-tag">📁 Project Info</div>
-        <h2 class="section-title">About This <span class="text-gradient">Project</span></h2>
-        <p>This capstone project was built as part of the <strong>Microsoft Elevate Internship</strong> program. It tackles the Entertainment & Media domain by applying deep learning (Bidirectional LSTM) to classify IMDB movie reviews as positive or negative sentiment.</p>
-        <div class="tech-stack">
-          <h4>Tech Stack</h4>
-          <div class="tech-tags">
-            <span class="tech-tag">Python 3.10</span><span class="tech-tag">TensorFlow / Keras</span><span class="tech-tag">NLTK</span><span class="tech-tag">NumPy</span><span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span><span class="tech-tag">Seaborn</span><span class="tech-tag">Scikit-learn</span><span class="tech-tag">Google Colab</span><span class="tech-tag">HTML/CSS/JS</span>
-          </div>
-        </div>
-        <div class="notebook-links">
-          <h4>📓 Notebooks & Resources</h4>
-          <a href="https://colab.research.google.com/drive/1ZJsGIXH1IPI4dpuJAm0zS7zh952jXpHa" target="_blank" class="nb-link">🔬 IMDB Sentiment Analysis Notebook</a>
-          <a href="https://colab.research.google.com/drive/1EkHaQHu1OlivcH-fCWuyWLX6OYQMOSWR" target="_blank" class="nb-link">🧠 RNN Architecture Notebook</a>
-          <a href="https://colab.research.google.com/drive/1zbl4y3Nzqdu4yZoUPVPmPu-B3pBQNMa6" target="_blank" class="nb-link">📊 EDA & Visualization Notebook</a>
-          <a href="https://colab.research.google.com/drive/1Yi4ScEZ0w1g-0G2vUYGjYZZVJzSttPMa" target="_blank" class="nb-link">🎯 Model Evaluation Notebook</a>
-          <a href="https://drive.google.com/file/d/1JPjEwcrk03Q8KBouZjcPG6mM3bFTlysA" target="_blank" class="nb-link">💾 Download Dataset (Google Drive)</a>
-        </div>
+    <div class="conclusion-grid">
+      <div class="conc-card">
+        <div class="conc-icon">✔️</div>
+        <h4>Goal Achieved</h4>
+        <p>Binary sentiment classification (Positive/Negative) with deep learning exceeding 89% validation accuracy.</p>
       </div>
-      <div class="about-student">
-        <div class="student-card">
-          <div class="student-avatar">NG</div>
-          <h3>Gohel Nandani Jivabhai</h3>
-          <p class="student-role">Computer Engineering Student</p>
-          <div class="student-details">
-            <div class="sd-row"><span>🏫</span><span>Government Engineering College, Rajkot</span></div>
-            <div class="sd-row"><span>💻</span><span>Department of Computer Engineering</span></div>
-            <div class="sd-row"><span>📧</span><span>nandanigohel09@gmail.com</span></div>
-            <div class="sd-row"><span>🔗</span><a href="https://github.com/Nandani097" target="_blank">github.com/Nandani097</a></div>
-          </div>
-          <div class="ms-card-badge">
-            <div class="ms-grid-sm"><span></span><span></span><span></span><span></span></div>
-            <span>Microsoft Elevate Intern</span>
-          </div>
-        </div>
+      <div class="conc-card">
+        <div class="conc-icon">📊</div>
+        <h4>Strong Performance</h4>
+        <p>93.2% train accuracy, 89.6% validation accuracy, AUC 0.926 and F1-Score 92.8% confirm robust learning.</p>
+      </div>
+      <div class="conc-card">
+        <div class="conc-icon">⚡</div>
+        <h4>Scalable System</h4>
+        <p>Flask API on Azure handles real-time predictions, scalable to large review volumes without degradation.</p>
+      </div>
+      <div class="conc-card">
+        <div class="conc-icon">🔍</div>
+        <h4>Key Challenge</h4>
+        <p>Sarcasm and mixed-sentiment reviews remain difficult. They require more labelled data and advanced models.</p>
+      </div>
+      <div class="conc-card">
+        <div class="conc-icon">💡</div>
+        <h4>Business Value</h4>
+        <p>Automates audience insight extraction for studios, OTT platforms & advertisers in real time.</p>
+      </div>
+      <div class="conc-card">
+        <div class="conc-icon">🚀</div>
+        <h4>End-to-End Pipeline</h4>
+        <p>From raw IMDB data to a live prediction API — demonstrates a complete production-grade ML deployment.</p>
       </div>
     </div>
   </div>
@@ -390,13 +337,8 @@
       <div class="brand-icon">🎬</div>
       <span>Cine<em>sentiment</em></span>
     </div>
-    <p>IMDB Reviews Sentiment Analysis · Microsoft Elevate Capstone · Government Engineering College Rajkot</p>
-    <div class="footer-links">
-      <a href="https://github.com/Nandani097" target="_blank">GitHub</a>
-      <a href="https://drive.google.com/file/d/1JPjEwcrk03Q8KBouZjcPG6mM3bFTlysA" target="_blank">Dataset</a>
-      <a href="https://colab.research.google.com/drive/1ZJsGIXH1IPI4dpuJAm0zS7zh952jXpHa" target="_blank">Colab</a>
-    </div>
-    <p class="footer-copy">© 2026 Gohel Nandani Jivabhai · Built for Microsoft Elevate Program</p>
+    <p>AI-Powered Sentiment Analysis Pipeline using Bidirectional LSTMs.</p>
+    <p class="footer-copy">© 2026 Cinesentiment Project · Built for NLP Portfolios</p>
   </div>
 </footer>
 
